@@ -42,6 +42,7 @@
         <li><a href="#">Team Talk</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li><a href="player.php">Player profile</a></li>
         <li><a href="/~vermaj/LocalLeague/php/logout.php" id="logoutBtn"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>

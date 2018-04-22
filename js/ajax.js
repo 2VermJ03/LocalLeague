@@ -64,31 +64,17 @@ function init(){
             clubLost.innerHTML = data[i].lost;
             clubDiff.innerHTML = data[i].diff;
             
-            
-            
-        }
+            const idtest = clubID.value;
+            console.log(idtest);
+            const linkToTalkBtn = document.createElement("a");
+            linkToTalkBtn.setAttribute("href", "/~vermaj/LocalLeague/teamtalk.php?clubID=" + data[i].clubID);
+            const t = document.createTextNode("Link to team talk");
+            linkToTalkBtn.appendChild(t);
+            document.getElementById("test1").appendChild(linkToTalkBtn);
 
-    }
-
-}
-
-function getMessages(){
-    /*
-    const xhr2 = new XMLHttpRequest();
-    xhr2.addEventListener ("load", res);
-    xhr2.open("GET", "/~vermaj/LocalLeague/php/teamtalkScript.php?clubID=" + clubID.value)
-    xhr2.send();
-
-    function res(e){
-        const output = "";
-        const data = JSON.parse(e.target.responseText);
-
-        for(var i=0; i<data.length; i++){
-            messageDiv.innerHTML = data[i].message;
         }
     }
-
-*/
-
-console.log(clubID);
 }
+
+
+

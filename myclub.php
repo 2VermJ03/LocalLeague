@@ -22,7 +22,9 @@
   
 </head>
 <body onload="init()">
-
+<div id="test1">
+Test
+</div>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -103,7 +105,7 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="well text-left">
-		    <h4 class="text-center">Top Goalscorers</h4>
+		        <h4 class="text-center">Top Goalscorers</h4>
             <p>1 | ...</p> 
             <p>2 | ...</p> 
             <p>3 | ...</p> 
@@ -111,7 +113,7 @@
         </div>
         <div class="col-sm-6">
           <div class="well text-left">
-		    <h4 class="text-center">Top Assists</h4></h4>
+		       <h4 class="text-center">Top Assists</h4></h4>
             <p>1 | ...</p> 
             <p>2 | ...</p> 
             <p>3 | ...</p> 
@@ -128,6 +130,25 @@
     </div>
   </div>
 </div>
+
+<div class="container-fluid text-center" id="teamtalkDiv">
+  <div class="row content">
+    <div class="col-sm-3">
+      <span> </span>
+    </div>
+    <div class="col-sm-6 text-center well">
+      <h1 class="well"> Team Talk </h1>
+      <div class="well" id="messageDiv">
+        
+      </div>
+      <div class="well">
+        <input id="message" type="text" class="form-control" name="message" placeholder="Write message here...">
+        <button type="button" class="btn btn-primary btn-group-justified" id="sendMessageBtn">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -192,7 +213,7 @@
   </div>
 </div>
 
-<p id="clubID" class="hide"></p>
+<p id="clubID"></p>
 
 <footer class="container-fluid text-center">
   <p>Jay Verma | Q12027103</p>

@@ -2,6 +2,8 @@
   session_start();
   if ((isset($_SESSION["user"]) && $_SESSION["user"] == true)){
     echo "<p id='userID' class='hide'>" . $_SESSION['user'] . "</p>";
+    $clubID = $_GET["clubID"];
+    echo "<input class='hide' id='clubID' name='clubID' type='number' value='" . $clubID .  "'>";
   }
   else{
     header("Location: /~vermaj/LocalLeague/index.php");
@@ -57,7 +59,7 @@
     <div class="col-sm-6 text-center well">
       <h1 class="well"> Team Talk </h1>
       <div class="well" id="messageDiv">
-        
+
       </div>
       <div class="well">
         <input id="message" type="text" class="form-control" name="message" placeholder="Write message here...">
@@ -72,12 +74,11 @@
 
 
 
-
 <footer class="container-fluid text-center">
   <p>Jay Verma | Q12027103</p>
 </footer>
 
-<script src="js/ajax.js"></script>
+<script src="js/teamtalkFunctions.js"></script>
 
 </body>
 </html>

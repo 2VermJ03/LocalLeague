@@ -78,10 +78,28 @@ h1{
   text-align: right;
   float: right;
 }
+
+.playerProfileClass{
+  width: 100%;
+}
  
+#createPlayerBtn{
+  float: right;
+}
+
+#updatePlayerBtn{
+  float: left;
+}
  
- 
- 
- 
+#teamtalkDiv{
+  background-color: grey;
+  min-height: 600px;
+}
+
+#messageDiv{
+  min-height: 300px;
+  overflow-y: scroll;
+  background-color: rgb(255, 255, 255);
+}
  
  

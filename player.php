@@ -56,25 +56,25 @@
 		</div>
     <div class="col-sm-6 text-center well">
 			<h1 class="well"> Player Profile </h1>
-			<form class="form-horizontal" action="" method="POST">
+			<form class="form-horizontal  playerProfileClass" action="php/createPlayer.php" method="POST">
         <div class="input-group">
-          <span class="input-group-addon col-sm-3">First Name:</span>
+          <span class="input-group-addon">First Name:</span>
           <input id="playerFirstName" type="text" class="form-control" name="playerFirstName" placeholder="First Name">
         </div>
         <div class="input-group">
-          <span class="input-group-addon col-sm-3">Last Name:</span>
+          <span class="input-group-addon">Last Name:</span>
           <input id="playerLastName" type="text" class="form-control" name="playerLastName" placeholder="Last Name">
         </div>
         <div class="input-group">
-          <span class="input-group-addon col-sm-3">Date of Birth:</span>
+          <span class="input-group-addon">Date of Birth:</span>
           <input id="dob" type="date" class="form-control" name="dob">
         </div>
         <div class="input-group">
-          <span class="input-group-addon col-sm-3">Bio:</span>
+          <span class="input-group-addon">Bio:</span>
           <textarea id="bio" class="form-control" name="bio" rows="1" placeholder="Write something about yourself..."></textarea>
         </div>
         <div class="input-group">
-          <span class="input-group-addon col-sm-3">Position:</span>
+          <span class="input-group-addon">Position:</span>
           <select class="form-control" id="position" name="position">
             <option value="ATK">Attack</option>
             <option value="MID">Midfield</option>
@@ -83,10 +83,12 @@
           </select>
         </div>
         <div class="input-group">
-          <span class="input-group-addon col-sm-3">Kit Number:</span>
-          <input id="number" type="number" class="form-control" name="number">
+          <span class="input-group-addon">Kit Number:</span>
+          <input id="kit" type="number" class="form-control" name="kit">
         </div>
-        <button type="submit" class="btn btn-success" id="createPlayerBtn">Submit</button>
+        <br/>
+        <button type="submit" class="btn btn-primary" id="updatePlayerBtn">Update</button>
+        <button type="submit" class="btn btn-success" id="createPlayerBtn">Create</button>
       </form>
 		</div>
   </div>

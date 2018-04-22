@@ -38,7 +38,7 @@
             echo "
             <li><a href='#'>Search</a></li>
             <li><a href='myclub.php'>My Club</a></li>
-            <li><a href='#'>Team Talk</a></li>
+            <li><a href='teamtalk.php'>Team Talk</a></li>
             ";
           }
         ?>

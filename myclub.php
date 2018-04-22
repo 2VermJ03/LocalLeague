@@ -39,7 +39,7 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="#">Search</a></li>
         <li class="active"><a href="myclub.php">My Club</a></li>
-        <li><a href="#">Team Talk</a></li>
+        <li><a href="teamtalk.php?clubID= <?php echo $clubID ?>">Team Talk</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="player.php">Player profile</a></li>
@@ -71,8 +71,8 @@
         </div>
       <div class="well text-center">
         <h3 id="clubName"></h3>
-        <p id="clubBio">Club Bio {echo club bio}</p>
-		<p id="clubLocation">Club Location {echo club city | county}</p>
+        <p id="clubBio"></p>
+	    	<p id="clubLocation"></p>
       </div>
       <div class="row">
         <div class="col-sm-3">
@@ -169,29 +169,30 @@
       </div>
       <div class="modal-body">
         <p>Enter match details here:</p>
-		<form class="form-group" id="addMatchForm">
-			<label class="control-label" >Date: </label>
-			<input class="form-control" type="date">
-			<br>
-			<label class="control-label">Time: </label>
-			<input class="form-control" type="time">
-			<br>
-			<label class="control-label">Type: </label>
-			<select class="form-control">
-				<option>Match</option>
-				<option>Training</option>
-			</select>
-			<br>
-			<input type="submit">
-		</form>
+        <form class="form-group" id="addMatchForm">
+          <label class="control-label" >Date: </label>
+          <input class="form-control" type="date">
+          <br>
+          <label class="control-label">Time: </label>
+          <input class="form-control" type="time">
+          <br>
+          <label class="control-label">Type: </label>
+          <select class="form-control">
+            <option>Match</option>
+            <option>Training</option>
+          </select>
+          <br>
+          <input type="submit">
+        </form>
       </div>
       <div class="modal-footer">
-	    
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+
+<p id="clubID" class="hide"></p>
 
 <footer class="container-fluid text-center">
   <p>Jay Verma | Q12027103</p>

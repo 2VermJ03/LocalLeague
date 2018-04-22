@@ -17,6 +17,10 @@ const clubWon = document.getElementById("clubWon");
 const clubDrawn = document.getElementById("clubDrawn");
 const clubLost = document.getElementById("clubLost");
 const clubDiff = document.getElementById("clubDiff");
+const clubID = document.getElementById("clubID");
+const messageDiv = document.getElementById("messageDiv");
+const message = document.getElementById("message");
+const sendMessageBtn = document.getElementById("sendMessageBtn");
 
 
 $(document).ready(function() {
@@ -47,10 +51,11 @@ function init(){
     xhr2.send();
 
     function res(e){
-        const output = "";
+        
         const data = JSON.parse(e.target.responseText);
 
         for(var i=0; i<data.length; i++){
+            clubID.innerHTML = data[i].clubID;
             clubName.innerHTML = data[i].clubName;
             clubBio.innerHTML = data[i].clubBio;
             clubLocation.innerHTML = data[i].city + ", " + data[i].county;
@@ -58,9 +63,32 @@ function init(){
             clubDrawn.innerHTML = data[i].drawn;
             clubLost.innerHTML = data[i].lost;
             clubDiff.innerHTML = data[i].diff;
-
+            
+            
+            
         }
 
     }
 
+}
+
+function getMessages(){
+    /*
+    const xhr2 = new XMLHttpRequest();
+    xhr2.addEventListener ("load", res);
+    xhr2.open("GET", "/~vermaj/LocalLeague/php/teamtalkScript.php?clubID=" + clubID.value)
+    xhr2.send();
+
+    function res(e){
+        const output = "";
+        const data = JSON.parse(e.target.responseText);
+
+        for(var i=0; i<data.length; i++){
+            messageDiv.innerHTML = data[i].message;
+        }
+    }
+
+*/
+
+console.log(clubID);
 }

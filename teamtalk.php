@@ -59,7 +59,11 @@
     <div class="col-sm-6 text-center well">
       <h1 class="well"> Team Talk </h1>
       <div class="well" id="messageDiv">
+        <div class="table-responsive">
+          <table id="outputTable" class="table">
 
+          </table>
+        </div>
       </div>
       <div class="well">
         <input id="message" type="text" class="form-control" name="message" placeholder="Write message here...">

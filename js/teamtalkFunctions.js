@@ -2,28 +2,31 @@
 const clubID = document.getElementById("clubID");
 const messageDiv = document.getElementById("messageDiv");
 const outputTable = document.getElementById("outputTable");
+const msgForm = document.getElementById("msgForm");
+const msg = document.getElementById("msg");
+const sendMsgBtn = document.getElementById("sendMsgBtn");
+const pid = document.getElementById("playerID");
+
 const id = clubID.value;
 
 function getMessages(){
-    
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener ("load", res);
     xhr2.open("GET", "/~vermaj/LocalLeague/php/teamtalkScript.php?clubID=" + id)
     xhr2.send();
 
     function res(e){
-        const data = JSON.parse(e.target.responseText);
+        const data2 = JSON.parse(e.target.responseText);
         var playerName ="";
 
-        for(var i=0; i<data.length; i++){
+        for(var i=0; i<data2.length; i++){
 
-            const playerID = data[i].playerID;
-
+            const playerID = data2[i].playerID;
+            pid.value = playerID;
             // function to get player name
             getPlayerDetails(playerID);
 
             function getPlayerDetails(playerID){
-                console.log(playerID);
                 const xhr3 = new XMLHttpRequest();
                 xhr3.addEventListener ("load", response);
                 xhr3.open("GET", "/~vermaj/LocalLeague/php/playerDetails.php?playerID=" + playerID);
@@ -33,7 +36,6 @@ function getMessages(){
             
                     for(var i=0; i<data1.length; i++){
                       playerName = data1[i].firstName;
-                      console.log(playerName);
 
                       const th = document.createElement("th");
                       th.innerHTML = playerName;
@@ -46,26 +48,28 @@ function getMessages(){
             const tr = document.createElement("tr");
             outputTable.appendChild(tr);
             const td = document.createElement("td");
-            td.innerHTML = data[i].message;
+            td.innerHTML = data2[i].msg;
             tr.appendChild(td);
 
-
-
-
-
-            
-            // const tr = document.createElement("tr");
-            //const th = document.createElement("th");
-            //const td = document.createElement("td");
-
-            //th.innerHTML = playerName;
-            //td.innerHTML = data[i].message;
-            
-            // outputTable.appendChild(tr); 
-            //tr.appendChild(th);
-            //tr.appendChild(td);
-            
-            
         }
     }
 }
+
+$(msgForm).submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: '/~vermaj/LocalLeague/php/sendMessage.php',
+        data: $(this).serialize(),
+        success: function(data)
+        {
+            if (data === 'SUCCESS') {
+                location.reload(true);
+            }
+            else if(data == 'Enter_MSG'){
+                alert('Enter a message');
+            }
+        }
+    });
+});
+

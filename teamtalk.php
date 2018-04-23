@@ -2,8 +2,6 @@
   session_start();
   if ((isset($_SESSION["user"]) && $_SESSION["user"] == true)){
     echo "<p id='userID' class='hide'>" . $_SESSION['user'] . "</p>";
-    $clubID = $_GET["clubID"];
-    echo "<input class='hide' id='clubID' name='clubID' type='number' value='" . $clubID .  "'>";
   }
   else{
     header("Location: /~vermaj/LocalLeague/index.php");
@@ -66,8 +64,16 @@
         </div>
       </div>
       <div class="well">
-        <input id="message" type="text" class="form-control" name="message" placeholder="Write message here...">
-        <button type="button" class="btn btn-primary btn-group-justified" id="sendMessageBtn">Send</button>
+        <form id="msgForm">
+          <?php
+            $clubID = $_GET["clubID"];
+            $playerID = $_GET["playerID"];
+            echo "<input class='hide' id='clubID' name='clubID' type='number' value='" . $clubID .  "'>";
+            echo "<input class='hide' id='playerID' name='playerID' type='number' value='" . $playerID .  "'>";
+          ?>
+          <input id="msg" type="text" class="form-control" name="msg" placeholder="Write message here...">
+          <button type="submit" class="btn btn-primary btn-group-justified" id="sendMsgBtn">Send</button>
+        </form>
       </div>
     </div>
   </div>

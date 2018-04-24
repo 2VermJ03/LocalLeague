@@ -38,12 +38,53 @@
 
 <div class="container-fluid text-center" id="signUpDiv">
 	<div class="row content">
-		<div class="col-sm-3">
-			<span> </span>
-		</div>
-		<div class="col-sm-6 text-center well">
+	  <div class="col-sm-1">
+				<span> </span>
+	  </div>
+		<div class="col-sm-10 text-center well">
 			<h1> Sign up </h1>
 			<form class="form-horizontal" action="php/signup.php" method="POST">
+		  	<div class="form-group">
+				  <label class="control-label col-sm-2" for="playerFirstName">First Name:</label>
+				  <div class="col-sm-10">
+            <input id="playerFirstName" type="text" class="form-control" name="playerFirstName" placeholder="First Name">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="playerLastName">Last Name:</label>
+				  <div class="col-sm-10">
+            <input id="playerLastName" type="text" class="form-control" name="playerLastName" placeholder="Last Name">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="dob">Date of Birth:</label>
+				  <div class="col-sm-10">
+            <input id="dob" type="date" class="form-control" name="dob">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="bio">Bio:</label>
+				  <div class="col-sm-10">
+            <input id="bio" class="form-control" name="bio" placeholder="Write something about yourself...">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="position">Position:</label>
+				  <div class="col-sm-10">
+						<select class="form-control" id="position" name="position">
+							<option value="ATK">Attack</option>
+							<option value="MID">Midfield</option>
+							<option value="DEF">Defense</option>
+							<option value="GK">Goalkeeper</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="kit">Kit Number:</label>
+				  <div class="col-sm-10">
+            <input id="kit" type="number" class="form-control" name="kit" min="1" max="99">
+				  </div>
+				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="email">Email:</label>
 				  <div class="col-sm-10">

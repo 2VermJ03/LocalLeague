@@ -39,7 +39,6 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="#">Search</a></li>
         <li><a href="myclub.php">My Club</a></li>
-        <li><a href="#">Team Talk</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="active"><a href="player.php">Player profile</a></li>

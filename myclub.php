@@ -22,9 +22,7 @@
   
 </head>
 <body onload="init()">
-<div id="test1">
-Test
-</div>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -41,7 +39,7 @@ Test
         <li><a href="index.php">Home</a></li>
         <li><a href="#">Search</a></li>
         <li class="active"><a href="myclub.php">My Club</a></li>
-        <li><a href="teamtalk.php?clubID= <?php echo $clubID ?>">Team Talk</a></li>
+        <li><a id="linkToTalk">Team Talk</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="player.php">Player profile</a></li>
@@ -131,24 +129,6 @@ Test
   </div>
 </div>
 
-<div class="container-fluid text-center" id="teamtalkDiv">
-  <div class="row content">
-    <div class="col-sm-3">
-      <span> </span>
-    </div>
-    <div class="col-sm-6 text-center well">
-      <h1 class="well"> Team Talk </h1>
-      <div class="well" id="messageDiv">
-        
-      </div>
-      <div class="well">
-        <input id="message" type="text" class="form-control" name="message" placeholder="Write message here...">
-        <button type="button" class="btn btn-primary btn-group-justified" id="sendMessageBtn">Send</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
@@ -213,7 +193,6 @@ Test
   </div>
 </div>
 
-<p id="clubID"></p>
 
 <footer class="container-fluid text-center">
   <p>Jay Verma | Q12027103</p>

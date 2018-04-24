@@ -6,6 +6,12 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 $confirmPassword = $_POST["confirmPassword"];
 $type = $_POST["type"];
+$firstName = $_POST["playerFirstName"];
+$lastName = $_POST["playerLastName"];
+$dob = date('dmY', strtotime($_POST['dob']));
+$bio = $_POST["bio"];
+$pos = $_POST["position"];
+$kit = $_POST["kit"];
 
 $result = $conn->query("SELECT email FROM ll_users WHERE email='$email'");
 $row = $result->fetch();
@@ -33,6 +39,20 @@ else{
 		$add -> bindParam(3, $type);
 		$add -> execute();
 		
+		$getID = $conn->lastInsertId();
+
+		$statement = $conn->prepare("INSERT INTO ll_players (firstName, lastName, dob, bio, position, kit, userID) VALUES (?,?,?,?,?,?,?)");
+
+		$statement -> bindParam(1, $firstName);
+		$statement -> bindParam(2, $lastName);
+		$statement -> bindParam(3, $dob);
+		$statement -> bindParam(4, $bio);
+		$statement -> bindParam(5, $pos);
+		$statement -> bindParam(6, $kit);
+		$statement -> bindParam(7, $getID);
+		
+		$statement -> execute();
+
 		echo "SUCCESS";
 	}
 }	

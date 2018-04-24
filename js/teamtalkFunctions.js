@@ -9,6 +9,10 @@ const pid = document.getElementById("playerID");
 
 const id = clubID.value;
 
+function clearDiv(){
+    messageDiv.innerHTML="";
+}
+
 function getMessages(){
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener ("load", res);
@@ -54,6 +58,7 @@ function getMessages(){
         }
     }
 }
+
 
 $(msgForm).submit(function(e) {
     e.preventDefault();

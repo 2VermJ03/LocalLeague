@@ -21,6 +21,7 @@ const clubID = document.getElementById("clubID");
 const messageDiv = document.getElementById("messageDiv");
 const message = document.getElementById("message");
 const sendMessageBtn = document.getElementById("sendMessageBtn");
+const linkToTalk = document.getElementById("linkToTalk");
 
 
 $(document).ready(function() {
@@ -43,7 +44,6 @@ $(document).ready(function() {
    });
 });
 
-
 function init(){
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener ("load", res);
@@ -55,7 +55,7 @@ function init(){
         const data = JSON.parse(e.target.responseText);
 
         for(var i=0; i<data.length; i++){
-            clubID.innerHTML = data[i].clubID;
+           // clubID.innerHTML = data[i].clubID;
             clubName.innerHTML = data[i].clubName;
             clubBio.innerHTML = data[i].clubBio;
             clubLocation.innerHTML = data[i].city + ", " + data[i].county;
@@ -64,13 +64,7 @@ function init(){
             clubLost.innerHTML = data[i].lost;
             clubDiff.innerHTML = data[i].diff;
             
-            const idtest = clubID.value;
-            console.log(idtest);
-            const linkToTalkBtn = document.createElement("a");
-            linkToTalkBtn.setAttribute("href", "/~vermaj/LocalLeague/teamtalk.php?clubID=" + data[i].clubID);
-            const t = document.createTextNode("Link to team talk");
-            linkToTalkBtn.appendChild(t);
-            document.getElementById("test1").appendChild(linkToTalkBtn);
+            linkToTalk.setAttribute("href", "/~vermaj/LocalLeague/teamtalk.php?clubID=" + data[i].clubID);
 
         }
     }

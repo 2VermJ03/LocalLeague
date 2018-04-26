@@ -6,12 +6,9 @@ const msgForm = document.getElementById("msgForm");
 const msg = document.getElementById("msg");
 const sendMsgBtn = document.getElementById("sendMsgBtn");
 const pid = document.getElementById("playerID");
+const updateMsgBtn = document.getElementById("updateMsgBtn");
 
 const id = clubID.value;
-
-function clearDiv(){
-    messageDiv.innerHTML="";
-}
 
 function getMessages(){
     const xhr2 = new XMLHttpRequest();
@@ -26,7 +23,7 @@ function getMessages(){
         for(var i=0; i<data2.length; i++){
 
             const playerID = data2[i].playerID;
-            pid.value = playerID;
+            pid.innerHTML = playerID;
             // function to get player name
             getPlayerDetails(playerID);
 
@@ -45,9 +42,13 @@ function getMessages(){
                       th.innerHTML = playerName;
                       tr.appendChild(th);
 
+                      
+                      
+
                     }
                 }
             }
+            
             
             const tr = document.createElement("tr");
             outputTable.appendChild(tr);
@@ -56,7 +57,7 @@ function getMessages(){
             tr.appendChild(td);
 
         }
-    }
+    } 
 }
 
 
@@ -71,10 +72,13 @@ $(msgForm).submit(function(e) {
             if (data === 'SUCCESS') {
                 location.reload(true);
             }
-            else if(data == 'Enter_MSG'){
+            else if(data === 'Enter_MSG'){
                 alert('Enter a message');
             }
         }
     });
 });
 
+updateMsgBtn.addEventListener("click", e=>{
+    location.reload(true);
+});

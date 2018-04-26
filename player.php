@@ -21,7 +21,7 @@
   
   
 </head>
-<body>
+<body onload="getPlayerDetails()">
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -29,7 +29,6 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>  
 	    	<span class="icon-bar"></span>  		
       </button>
       <a class="navbar-brand" href="index.php">LocalLeague</a>
@@ -37,11 +36,10 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
-        <li><a href="#">Search</a></li>
+        <li class="active"><a href="player.php">Player profile</a></li>
         <li><a href="myclub.php">My Club</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="active"><a href="player.php">Player profile</a></li>
         <li><a href="/~vermaj/LocalLeague/php/logout.php" id="logoutBtn"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
@@ -55,40 +53,50 @@
 		</div>
     <div class="col-sm-6 text-center well">
 			<h1 class="well"> Player Profile </h1>
-			<form class="form-horizontal  playerProfileClass" action="php/createPlayer.php" method="POST">
-        <div class="input-group">
-          <span class="input-group-addon">First Name:</span>
-          <input id="playerFirstName" type="text" class="form-control" name="playerFirstName" placeholder="First Name">
+        <div class="responsive-table">
+          <table id="playerTable" class="table">
+            <tr>
+              <th>First Name: </th>
+              <td id="firstName"> </td>
+            </tr>
+            <tr>
+              <th>Last Name: </th>
+              <td id="lastName"> </td>
+            </tr>
+            <tr>
+              <th> Date of Birth: </th>
+              <td id="dob"> </td>
+            </tr>
+            <tr>
+              <th>Bio: </th>
+              <td id="bio"> </td>
+            </tr>
+            <tr>
+              <th>Position: </th>
+              <td id="pos"> </td>
+            </tr>
+            <tr>
+              <th>Kit Number: </th>
+              <td id="kit"> </td>
+            </tr>
+            <tr>
+              <th>Goals: </th>
+              <td id="goals"> </td>
+            </tr>
+            <tr>
+              <th>Assists: </th>
+              <td id="assists"> </td>
+            </tr>
+            <tr>
+              <th>Yellow Cards: </th>
+              <td id="yellows"> </td>
+            </tr>
+            <tr>
+              <th>Red Cards: </th>
+              <td id="reds"> </td>
+            </tr>
+          </table>
         </div>
-        <div class="input-group">
-          <span class="input-group-addon">Last Name:</span>
-          <input id="playerLastName" type="text" class="form-control" name="playerLastName" placeholder="Last Name">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">Date of Birth:</span>
-          <input id="dob" type="date" class="form-control" name="dob">
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">Bio:</span>
-          <textarea id="bio" class="form-control" name="bio" rows="1" placeholder="Write something about yourself..."></textarea>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">Position:</span>
-          <select class="form-control" id="position" name="position">
-            <option value="ATK">Attack</option>
-            <option value="MID">Midfield</option>
-            <option value="DEF">Defense</option>
-            <option value="GK">Goalkeeper</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <span class="input-group-addon">Kit Number:</span>
-          <input id="kit" type="number" class="form-control" name="kit">
-        </div>
-        <br/>
-        <button type="submit" class="btn btn-primary" id="updatePlayerBtn">Update</button>
-        <button type="submit" class="btn btn-success" id="createPlayerBtn">Create</button>
-      </form>
 		</div>
   </div>
 </div>
@@ -105,7 +113,7 @@
   <p>Jay Verma | Q12027103</p>
 </footer>
 
-<script src="js/ajax.js"></script>
+<script src="js/playerProfile.js"></script>
 
 </body>
 </html>

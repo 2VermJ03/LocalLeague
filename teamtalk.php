@@ -37,12 +37,11 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
-        <li><a href="#">Search</a></li>
+        <li><a href="player.php">Player profile</a></li>
         <li><a href="myclub.php">My Club</a></li>
-        <li class="active"><a href="teamtalk.php">Team Talk</a></li>
+        <li class="active"><a href="#">Team Talk</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="player.php">Player profile</a></li>
         <li><a href="/~vermaj/LocalLeague/php/logout.php" id="logoutBtn"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
@@ -56,6 +55,7 @@
     </div>
     <div class="col-sm-6 text-center well">
       <h1 class="well"> Team Talk </h1>
+      <button class="btn btn-primary btn-group-justified" id="updateMsgBtn">Update</button>
       <div class="well" id="messageDiv">
         <div class="table-responsive">
           <table id="outputTable" class="table">

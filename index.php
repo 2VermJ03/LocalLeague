@@ -25,7 +25,6 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
 	    	<span class="icon-bar"></span>   		
       </button>
       <a class="navbar-brand" href="index.php">LocalLeague</a>
@@ -36,7 +35,7 @@
         <?php
           if ((isset($_SESSION["user"]) && $_SESSION["user"] == true)){
             echo "
-            <li><a href='#'>Search</a></li>
+            <li><a href='player.php'>Player profile</a></li>
             <li><a href='myclub.php'>My Club</a></li>
             ";
           }
@@ -78,7 +77,7 @@
         <img src="img/img2.jpeg" alt="Image">
         <div class="carousel-caption">
           <h3>Search</h3>
-		  <p>Find players for your club | Find a club to play for</p>
+		      <p>Find players for your club | Find a club to play for</p>
         </div>      
       </div>
 	  
@@ -86,7 +85,7 @@
         <img src="img/img3.jpeg" alt="Image">
         <div class="carousel-caption">
           <h3>Communicate</h3>
-		  <p>Talk to your team | Report injuries</p>
+		      <p>Talk to your team | Report injuries</p>
         </div>      
       </div>
     </div>
@@ -124,7 +123,6 @@
           </div>
           <div class="modal-footer">
             <p>Not signed up yet? <a href="signup.php"><u>Create an account here </u></a></p>
-            <p><a href="#"><u>Forgot password?</u></a></p>
             <button type="submit" class="btn btn-success" id="loginBtn">Submit</button>
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
@@ -140,6 +138,6 @@
 </footer>
 
 
-<script src="js/ajax.js"></script>
+<script src="js/clubFunctions.js"></script>
 </body>
 </html>

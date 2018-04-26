@@ -59,6 +59,7 @@ h1{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: auto;
 }
 
 #playerDiv{
@@ -94,6 +95,12 @@ h1{
 #teamtalkDiv{
   background-color: grey;
   min-height: 600px;
+  background-image: url("../img/img6.jpeg");
+  min-height: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #messageDiv{
@@ -101,5 +108,7 @@ h1{
   overflow-y: scroll;
   background-color: rgb(255, 255, 255);
 }
- 
- 
+
+#adminControls{
+  min-height: 60%;
+}

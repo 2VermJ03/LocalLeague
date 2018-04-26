@@ -23,7 +23,7 @@ else{
     $add -> execute();
     
     
-    echo "SUCCESS";
+    echo "SUCCESS"; 
     
     
 }

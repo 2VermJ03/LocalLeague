@@ -9,7 +9,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <link rel="stylesheet" href="css/stylesheet.css?v=1.0">
-  <script src="js/ajax.js"></script>
 </head>
 <body>
 
@@ -28,9 +27,6 @@
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
     </div>
   </div>
 </nav>
@@ -43,7 +39,7 @@
 	  </div>
 		<div class="col-sm-10 text-center well">
 			<h1> Sign up </h1>
-			<form class="form-horizontal" action="php/signup.php" method="POST">
+			<form class="form-horizontal" method="POST" action="php/signup.php">
 		  	<div class="form-group">
 				  <label class="control-label col-sm-2" for="playerFirstName">First Name:</label>
 				  <div class="col-sm-10">
@@ -65,7 +61,7 @@
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="bio">Bio:</label>
 				  <div class="col-sm-10">
-            <input id="bio" class="form-control" name="bio" placeholder="Write something about yourself...">
+            <input type="text" id="bio" class="form-control" name="bio" placeholder="Write something about yourself...">
 				  </div>
 				</div>
 				<div class="form-group">
@@ -104,25 +100,61 @@
 				  </div>
 				</div>
 				<div class="radio form-group">
-					<label><input type="radio" name="type" value="1">Manager</label>
-					<label><input type="radio" name="type" value="0">Player</label>
+				  <label class="control-label col-sm-2" for="radio">Type: </label>
+					<label for="manager"><input type="radio" name="type" value="1" id="manager">Manager</label>
+					<label for="player"><input type="radio" name="type" value="0" id="player">Player</label>
 				</div>
 				<br/>
+				<div id="joinClubDiv">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="position">Find your club:</label>
+						<div class="col-sm-10">
+							<select class="form-control" id="clubList" name="clubList">
+
+							</select>
+						</div>
+					</div>
+				</div>
+				<div id="createClubDiv">
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="clubName">Club Name:</label>
+						<div class="col-sm-10">
+							<input id="clubName" type="text" class="form-control" name="clubName" placeholder="Club Name">
+						</div>
+					</div>
+					<div class="form-group">
+				    <label class="control-label col-sm-2" for="city">City:</label>
+						<div class="col-sm-10">
+							<input id="city" type="text" class="form-control" name="city" placeholder="City">
+						</div>
+			  	</div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="county">County:</label>
+						<div class="col-sm-10">
+							<input id="county" type="text" class="form-control" name="county" placeholder="County">
+						</div>
+				  </div>
+					<div class="form-group">
+						<label class="control-label col-sm-2" for="clubBio">Club Bio:</label>
+						<div class="col-sm-10">
+							<input id="clubBio" type="text" class="form-control" name="clubBio" placeholder="Write something about your club...">
+						</div>
+					</div>
+				</div>
+				<input name="clubID" id="clubID" class="hide">
 			  <button type="submit" class="btn btn-success" id="signUpSubmit">Submit</button>
 			</form>
-		</div>
-		<div class="col-sm-3">
-			<span> </span>
 		</div>
 	</div>
 </div>
 
 
 
-
 <footer class="container-fluid text-center">
   <p>Jay Verma | Q12027103</p>
 </footer>
+
+<script src="js/signup.js"></script>
 
 </body>
 </html>

@@ -91,6 +91,10 @@ h1{
 #updatePlayerBtn{
   float: left;
 }
+
+#addMatchBtn{
+  float: right;
+}
  
 #teamtalkDiv{
   background-color: grey;
@@ -110,5 +114,5 @@ h1{
 }
 
 #adminControls{
-  min-height: 60%;
+  min-height: 20%;
 }

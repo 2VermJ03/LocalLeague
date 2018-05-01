@@ -60,14 +60,14 @@ else{
 	elseif(empty($dob)){
 		echo "ENTER_DOB";
 	}
-	elseif(empty($bio)){
-		echo "ENTER_BIO";
-	}
 	elseif(empty($pos)){
 		echo "ENTER_POS";
 	}
 	elseif(empty($kit)){
 		echo "ENTER_KIT";
+	}
+	elseif(empty($type)){
+		echo "ENTER_TYPE";
 	}
 	else{
 		$add = $conn->prepare("INSERT INTO ll_users (email, pword, manager) VALUES (?,?,?)");
@@ -79,36 +79,28 @@ else{
 		
 		$getID = $conn->lastInsertId();
 
-		$statement = $conn->prepare("INSERT INTO ll_players (firstName, lastName, dob, bio, position, kit, userID, goals, assists, yellow, red) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
+		if($type === "player"){
 
-		$statement -> bindParam(1, $firstName);
-		$statement -> bindParam(2, $lastName);
-		$statement -> bindParam(3, $dob);
-		$statement -> bindParam(4, $bio);
-		$statement -> bindParam(5, $pos);
-		$statement -> bindParam(6, $kit);
-		$statement -> bindParam(7, $getID);
-		$statement -> bindParam(8, $goals);
-		$statement -> bindParam(9, $assists);
-		$statement -> bindParam(10, $yellow);
-		$statement -> bindParam(11, $red);
+			$statement = $conn->prepare("INSERT INTO ll_players (firstName, lastName, dob, bio, position, kit, userID, goals, assists, yellow, red, clubID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
 
-		$statement -> execute();
+			$statement -> bindParam(1, $firstName);
+			$statement -> bindParam(2, $lastName);
+			$statement -> bindParam(3, $dob);
+			$statement -> bindParam(4, $bio);
+			$statement -> bindParam(5, $pos);
+			$statement -> bindParam(6, $kit);
+			$statement -> bindParam(7, $getID);
+			$statement -> bindParam(8, $goals);
+			$statement -> bindParam(9, $assists);
+			$statement -> bindParam(10, $yellow);
+			$statement -> bindParam(11, $red);
+			$statement -> bindParam(12, $clubID);
 
-		$playerID = $conn->lastInsertId();
-
-		if($type == 0){
-
-			$clubPlayerInsert = $conn->prepare("INSERT INTO ll_clubPlayers (clubID, playerID) VALUES (?,?)");
-
-			$clubPlayerInsert -> bindParam(1, $clubID);
-			$clubPlayerInsert -> bindParam(2, $playerID);
-	
-			$clubPlayerInsert -> execute();
+			$statement -> execute();
 	
 			echo "PLAYER_CREATED_CLUB_JOINED";
 		}
-		elseif($type == 1){
+		elseif($type === "manager"){
 			if(empty($clubName)){
 				echo "ENTER_CLUB_NAME";
 			}
@@ -139,15 +131,25 @@ else{
 				$createClub -> bindParam(13, $getID);
 	
 				$createClub -> execute();
-				
-				$clubID = $conn->lastInsertId();
-	
-				$clubPlayerInsert = $conn->prepare("INSERT INTO ll_clubPlayers (clubID, playerID) VALUES (?,?)");
-	
-				$clubPlayerInsert -> bindParam(1, $clubID);
-				$clubPlayerInsert -> bindParam(2, $playerID);
-		
-				$clubPlayerInsert -> execute();
+
+				$newClubID = $conn->lastInsertId();
+
+				$statement = $conn->prepare("INSERT INTO ll_players (firstName, lastName, dob, bio, position, kit, userID, goals, assists, yellow, red, clubID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+
+				$statement -> bindParam(1, $firstName);
+				$statement -> bindParam(2, $lastName);
+				$statement -> bindParam(3, $dob);
+				$statement -> bindParam(4, $bio);
+				$statement -> bindParam(5, $pos);
+				$statement -> bindParam(6, $kit);
+				$statement -> bindParam(7, $getID);
+				$statement -> bindParam(8, $goals);
+				$statement -> bindParam(9, $assists);
+				$statement -> bindParam(10, $yellow);
+				$statement -> bindParam(11, $red);
+				$statement -> bindParam(12, $newClubID);
+
+				$statement -> execute();
 	
 				echo "PLAYER_AND_CLUB_CREATED";
 			}

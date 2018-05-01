@@ -25,6 +25,12 @@ const clubID = document.getElementById("clubID");
 const playerID = document.getElementById("playerID");
 const playerList = document.getElementById("playerList");
 const playerTable = document.getElementById("playerTable");
+const gs1 = document.getElementById("gs1");
+const gs2 = document.getElementById("gs2");
+const gs3 = document.getElementById("gs3");
+const as1 = document.getElementById("as1");
+const as2 = document.getElementById("as2");
+const as3 = document.getElementById("as3");
 
 $(document).ready(function() {
     $(loginForm).submit(function(e) {
@@ -45,6 +51,8 @@ $(document).ready(function() {
      });
    });
 });
+
+
 
 function getClubDetails(){
     const xhr2 = new XMLHttpRequest();
@@ -95,7 +103,7 @@ function getClubDetails(){
                         const reds = data1[i].red;
             
                         const players = document.createElement("option");
-                        const fullName = firstName + " " + lastName;
+                        const fullName = pid + " | " + firstName + " " + lastName;
                         players.value = fullName;
                         players.innerHTML = fullName;
                         playerList.appendChild(players);
@@ -132,10 +140,78 @@ function getClubDetails(){
                     }
                 }
             }
+            getTopScorers();
+            function getTopScorers(){
+                const xhr4 = new XMLHttpRequest();
+                xhr4.addEventListener ("load", res);
+                xhr4.open("GET", "/~vermaj/LocalLeague/php/topScorers.php?clubID=" + clubID.value);
+                xhr4.send();
+            
+                function res(e){
+                    const data1 = JSON.parse(e.target.responseText);
+            
+                    for(var i=0; i<data1.length; i++){
+                        gs1.innerHTML = "1| " + data1[0].firstName + " " + data1[0].lastName + " - " + data1[0].goals;
+                        gs2.innerHTML = "2| " + data1[1].firstName + " " + data1[1].lastName + " - " + data1[1].goals;
+                        gs3.innerHTML = "3| " + data1[2].firstName + " " + data1[2].lastName + " - " + data1[2].goals;
+                    }
+                }
+            }
+            getTopAssists();
+            function getTopAssists(){
+                const xhr4 = new XMLHttpRequest();
+                xhr4.addEventListener ("load", res);
+                xhr4.open("GET", "/~vermaj/LocalLeague/php/topAssists.php?clubID=" + clubID.value);
+                xhr4.send();
+            
+                function res(e){
+                    const data1 = JSON.parse(e.target.responseText);
+            
+                    for(var i=0; i<data1.length; i++){
+                        as1.innerHTML = "1| " + data1[0].firstName + " " + data1[0].lastName + " - " + data1[0].assists;
+                        as2.innerHTML = "2| " + data1[1].firstName + " " + data1[1].lastName + " - " + data1[1].assists;
+                        as3.innerHTML = "3| " + data1[2].firstName + " " + data1[2].lastName + " - " + data1[2].assists;
+                    }
+                }
+            }
         }
     }
 }
 
 
+$(document).ready(function(cid) {
+    $(addMatchForm).submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+         type: "POST",
+         url: '/~vermaj/LocalLeague/php/addmatch.php',
+         data: $(this).serialize(),
+         success: function(data)
+         {
+            if (data === 'SUCCESS') {
+                location.reload(true);
+            }
+            else{
+              alert('Enter match details');
+            }
+         }
+     });
+   });
+});
 
-
+$(document).ready(function(cid) {
+    $(bookForm).submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+         type: "POST",
+         url: '/~vermaj/LocalLeague/php/bookPlayer.php',
+         data: $(this).serialize(),
+         success: function(data)
+         {
+            if (data === 'SUCCESS') {
+                location.reload(true);
+            }
+         }
+     });
+   });
+});

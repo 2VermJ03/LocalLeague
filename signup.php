@@ -10,7 +10,7 @@
   
   <link rel="stylesheet" href="css/stylesheet.css?v=1.0">
 </head>
-<body>
+<body onload="getClubs()">
 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -39,35 +39,35 @@
 	  </div>
 		<div class="col-sm-10 text-center well">
 			<h1> Sign up </h1>
-			<form class="form-horizontal" method="POST" action="php/signup.php">
+			<form class="form-horizontal" method="POST" id="signUpForm">
 		  	<div class="form-group">
 				  <label class="control-label col-sm-2" for="playerFirstName">First Name:</label>
 				  <div class="col-sm-10">
-            <input id="playerFirstName" type="text" class="form-control" name="playerFirstName" placeholder="First Name">
+            <input id="playerFirstName" type="text" class="form-control" name="playerFirstName" placeholder="First Name" required>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="playerLastName">Last Name:</label>
 				  <div class="col-sm-10">
-            <input id="playerLastName" type="text" class="form-control" name="playerLastName" placeholder="Last Name">
+            <input id="playerLastName" type="text" class="form-control" name="playerLastName" placeholder="Last Name" required>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="dob">Date of Birth:</label>
 				  <div class="col-sm-10">
-            <input id="dob" type="date" class="form-control" name="dob">
+            <input id="dob" type="date" class="form-control" name="dob" required>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="bio">Bio:</label>
 				  <div class="col-sm-10">
-            <input type="text" id="bio" class="form-control" name="bio" placeholder="Write something about yourself...">
+            <input type="text" id="bio" class="form-control" name="bio" placeholder="Write something about yourself..." required>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="position">Position:</label>
 				  <div class="col-sm-10">
-						<select class="form-control" id="position" name="position">
+						<select class="form-control" id="position" name="position" required>
 							<option value="ATK">Attack</option>
 							<option value="MID">Midfield</option>
 							<option value="DEF">Defense</option>
@@ -78,40 +78,40 @@
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="kit">Kit Number:</label>
 				  <div class="col-sm-10">
-            <input id="kit" type="number" class="form-control" name="kit" min="1" max="99">
+            <input id="kit" type="number" class="form-control" name="kit" min="1" max="99" required>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="email">Email:</label>
 				  <div class="col-sm-10">
-					<input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+					<input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="password">Password:</label>
 				  <div class="col-sm-10">
-					<input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+					<input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
 				  </div>
 				</div>
 				<div class="form-group">
 				  <label class="control-label col-sm-2" for="confirmPassword">Confirm Password:</label>
 				  <div class="col-sm-10">
-					<input type="password" class="form-control" id="confirmPassword" placeholder="Enter password again" name="confirmPassword">
+					<input type="password" class="form-control" id="confirmPassword" placeholder="Enter password again" name="confirmPassword" required>
 				  </div>
 				</div>
 				<div class="radio form-group">
-				  <label class="control-label col-sm-2" for="radio">Type: </label>
-					<label for="manager"><input type="radio" name="type" value="1" id="manager">Manager</label>
-					<label for="player"><input type="radio" name="type" value="0" id="player">Player</label>
+				  <label class="control-label col-sm-2" for="type"><b>Type: </b></label>
+					<label for="manager"><input type="radio" name="type" value="manager" id="manager">Manager</label>
+					<label for="player"><input type="radio" name="type" value="player" id="player">Player</label>
 				</div>
 				<br/>
 				<div id="joinClubDiv">
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="position">Find your club:</label>
-						<div class="col-sm-10">
-							<select class="form-control" id="clubList" name="clubList">
+						<div class="col-sm-10 responsive-table">
+							<table id="clubList">
 
-							</select>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -141,7 +141,6 @@
 						</div>
 					</div>
 				</div>
-				<input name="clubID" id="clubID" class="hide">
 			  <button type="submit" class="btn btn-success" id="signUpSubmit">Submit</button>
 			</form>
 		</div>

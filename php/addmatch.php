@@ -5,27 +5,17 @@ $conn = new PDO("mysql:host=localhost; dbname=vermaj", "vermaj", "oonifeho");
 $date = date('dmY', strtotime($_POST['date']));
 $time = $_POST["time"];
 $type = $_POST["type"];
+$clubID = $_POST["clubID"];
 
-$addmatch = $conn->prepare("INSERT INTO ll_match (date, time, type) VALUES (?,?,?)");
+$addmatch = $conn->prepare("INSERT INTO ll_match (date, time, type, clubID) VALUES (?,?,?,?)");
 
 $addmatch -> bindParam(1, $date);
 $addmatch -> bindParam(2, $time);
 $addmatch -> bindParam(3, $type);
+$addmatch -> bindParam(4, $clubID);
 
 $addmatch -> execute();
 
-$qry = $conn->query("SELECT * FROM ll_match");
-$stmt = $qry->fetch();
-
-if($stmt){
-	while($stmt){
-
-		echo "$stmt[date]";
-		echo "$stmt[time]";
-		echo "$stmt[type]";		
-		$stmt = $qry->fetch();
-
-	}
-}
+echo "SUCCESS";
 
 ?>

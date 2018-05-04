@@ -17,6 +17,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
+  <link rel="icon" href="img/favicon.png">
   <link rel="stylesheet" href="css/stylesheet.css?v=1.0">
   
   
@@ -37,7 +38,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
-        <li><a href="player.php">Player profile</a></li>
+        <li><a href="player.php">Player Profile</a></li>
         <li class="active"><a href="myclub.php">My Club</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -49,35 +50,40 @@
 
 <div class="container-fluid text-center">
   <div class="row content">
-    <div class="col-sm-3 sidenav" id="fixturesList">
+    <div class="col-sm-3 sidenav text-center">
       <br/>
-      <div class="well">
+      <div class="well responsive-table" id="fixturesList">
         <h2><u>Fixtures</u></h2>
-        
-      
+        <table class="table" id="fixturesTable">
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Type</th>
+          </tr>
+        </table>
       </div>
       </div>
       <br/>
       <div class="col-sm-9">
+        <div class="well text-center">
+          <h3 id="clubName"></h3>
+          <p id="clubBio"></p>
+          <p id="clubLocation"></p>
+        </div>
         <div class="well text-center" id="adminControls">
           <h3>Admin Controls</h3>
           <div class="col-sm-5">
-            <button data-toggle="modal" data-target="#addMatchModal"> Open match modal </button>
+            <button data-toggle="modal" data-target="#addMatchModal"> Add fixture </button>
           </div>
           <div class="col-sm-1">
             <span> </span>
           </div>
           <div class="col-sm-5">
-            <button data-toggle="modal" data-target="#bookModal"> Open book modal </button>
+            <button data-toggle="modal" data-target="#bookModal"> Book player </button>
         </div>
       </div>
       <div class="well text-center">
         <a id="linkToTalk"><button class="btn btn-primary btn-group-justified">Go to Team Talk</button></a>
-      </div>
-      <div class="well text-center">
-        <h3 id="clubName"></h3>
-        <p id="clubBio"></p>
-	    	<p id="clubLocation"></p>
       </div>
       <div class="row">
         <div class="col-sm-3">
@@ -164,9 +170,9 @@
             <label class="control-label col-sm-2" for="type">Type:</label>
             <div class="col-sm-10">
               <select class="form-control" id="type" name="type">
-                <option value="match">Match</option>
-                <option value="training">Training</option>
-                <option value="social">Social</option>
+                <option value="Match">Match</option>
+                <option value="Training">Training</option>
+                <option value="Social">Social</option>
               </select>
             </div>
             </div>

@@ -1,7 +1,7 @@
 <?php
   session_start();
   if ((isset($_SESSION["user"]) && $_SESSION["user"] == true)){
-    echo "<p id='userID' class='hide'>" . $_SESSION['user'] . "</p>";
+    echo "<input type='text' class='hide' name='userID' id='userID' value='" . $_SESSION['user'] . "'>";
   }
   else{
     header("Location: /~vermaj/LocalLeague/index.php");
@@ -37,7 +37,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
-        <li><a href="player.php">Player profile</a></li>
+        <li><a href="player.php">Player Profile</a></li>
         <li><a href="myclub.php">My Club</a></li>
         <li class="active"><a href="#">Team Talk</a></li>
       </ul>
@@ -67,10 +67,9 @@
         <form id="msgForm">
           <?php
             $clubID = $_GET["clubID"];
-            $playerID = $_GET["playerID"];
-            echo "<input class='hide' id='clubID' name='clubID' type='number' value='" . $clubID .  "'>";
-            echo "<input class='hide' id='playerID' name='playerID' type='number' value='" . $playerID .  "'>";
+            echo "<input id='clubID' class='hide' name='clubID' type='number' value='" . $clubID .  "'>";
           ?>
+          <input class='hide' id='playerID' name='playerID' type='number'>
           <input id="msg" type="text" class="form-control" name="msg" placeholder="Write message here...">
           <button type="submit" class="btn btn-primary btn-group-justified" id="sendMsgBtn">Send</button>
         </form>

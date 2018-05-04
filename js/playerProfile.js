@@ -15,7 +15,7 @@ const reds = document.getElementById("reds");
 function getPlayerDetails(){
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener ("load", res);
-    xhr2.open("GET", "/~vermaj/LocalLeague/php/playerDetails.php?userID=" + userID.value)
+    xhr2.open("GET", "/~vermaj/LocalLeague/php/getPlayer.php?userID=" + userID.value)
     xhr2.send();
 
     function res(e){
@@ -34,7 +34,7 @@ function getPlayerDetails(){
             yellows.innerHTML = data[i].yellow;
             reds.innerHTML = data[i].red;
             
-
+ 
         }
     }
 }

@@ -2,7 +2,8 @@
 session_start();
 $conn = new PDO("mysql:host=localhost; dbname=vermaj", "vermaj", "oonifeho");
 
-$date = date('dmY', strtotime($_POST['date']));
+//$date = date('dmY', strtotime($_POST['date']));
+$date = $_POST["date"];
 $time = $_POST["time"];
 $type = $_POST["type"];
 $clubID = $_POST["clubID"];

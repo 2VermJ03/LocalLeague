@@ -31,6 +31,8 @@ const gs3 = document.getElementById("gs3");
 const as1 = document.getElementById("as1");
 const as2 = document.getElementById("as2");
 const as3 = document.getElementById("as3");
+const fixturesTable = document.getElementById("fixturesTable");
+const adminControls = document.getElementById("adminControls");
 
 $(document).ready(function() {
     $(loginForm).submit(function(e) {
@@ -74,6 +76,14 @@ function getClubDetails(){
             clubDrawn.innerHTML = data[i].drawn;
             clubLost.innerHTML = data[i].lost;
             clubDiff.innerHTML = data[i].gd;
+
+            const manager = data[i].manager;
+            if(manager == userID.value){
+                adminControls.style.display = "block";
+            }
+            else{
+                adminControls.style.display = "none";
+            }
             
             getClubPlayers(playerID);
 
@@ -136,7 +146,7 @@ function getClubDetails(){
 
                         
 
-                        linkToTalk.setAttribute("href", "/~vermaj/LocalLeague/teamtalk.php?clubID=" + clubID.value + "&playerID=" + playerID.value);
+                        linkToTalk.setAttribute("href", "/~vermaj/LocalLeague/teamtalk.php?clubID=" + clubID.value);
                     }
                 }
             }
@@ -171,6 +181,41 @@ function getClubDetails(){
                         as1.innerHTML = "1| " + data1[0].firstName + " " + data1[0].lastName + " - " + data1[0].assists;
                         as2.innerHTML = "2| " + data1[1].firstName + " " + data1[1].lastName + " - " + data1[1].assists;
                         as3.innerHTML = "3| " + data1[2].firstName + " " + data1[2].lastName + " - " + data1[2].assists;
+                    }
+                }
+            }
+            getFixtures();
+            function getFixtures(){
+                const xhr4 = new XMLHttpRequest();
+                xhr4.addEventListener ("load", res);
+                xhr4.open("GET", "/~vermaj/LocalLeague/php/getFixtures.php?clubID=" + clubID.value);
+                xhr4.send();
+            
+                function res(e){
+                    const data1 = JSON.parse(e.target.responseText);
+            
+                    for(var i=0; i<data1.length; i++){
+                        const date = data1[i].date;
+                        const time = data1[i].time;
+                        const type = data1[i].type;
+
+                        
+
+                        const tr = document.createElement("tr");
+
+                        const td_date = document.createElement("td");
+                        const td_time = document.createElement("td");
+                        const td_type = document.createElement("td");
+
+                        td_date.innerHTML = date;
+                        td_time.innerHTML = time;
+                        td_type.innerHTML = type;
+
+                        tr.appendChild(td_date);
+                        tr.appendChild(td_time);
+                        tr.appendChild(td_type);
+                        fixturesTable.appendChild(tr);
+
                     }
                 }
             }

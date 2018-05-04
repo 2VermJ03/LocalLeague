@@ -1,63 +1,64 @@
-
+// Global vars
 const clubID = document.getElementById("clubID");
 const messageDiv = document.getElementById("messageDiv");
 const outputTable = document.getElementById("outputTable");
 const msgForm = document.getElementById("msgForm");
 const msg = document.getElementById("msg");
 const sendMsgBtn = document.getElementById("sendMsgBtn");
-const pid = document.getElementById("playerID");
+const playerID = document.getElementById("playerID");
 const updateMsgBtn = document.getElementById("updateMsgBtn");
+const userID = document.getElementById("userID");
 
-const id = clubID.value;
+const uid = userID.value;
+const cid = clubID.value;
 
 function getMessages(){
     const xhr2 = new XMLHttpRequest();
     xhr2.addEventListener ("load", res);
-    xhr2.open("GET", "/~vermaj/LocalLeague/php/teamtalkScript.php?clubID=" + id)
+    xhr2.open("GET", "/~vermaj/LocalLeague/php/teamtalkScript.php?clubID=" + cid);
     xhr2.send();
 
     function res(e){
         const data2 = JSON.parse(e.target.responseText);
-        var playerName ="";
 
         for(var i=0; i<data2.length; i++){
+            const message = data2[i].msg;
+            const firstName = data2[i].firstName;
+            /*
+            const lastName = data2[i].lastName;
 
-            const playerID = data2[i].playerID;
-            pid.innerHTML = playerID;
-            // function to get player name
-            getPlayerDetails(playerID);
-
-            function getPlayerDetails(playerID){
-                const xhr3 = new XMLHttpRequest();
-                xhr3.addEventListener ("load", response);
-                xhr3.open("GET", "/~vermaj/LocalLeague/php/playerDetails.php?playerID=" + playerID);
-                xhr3.send();
-                function response(e){
-                    const data1 = JSON.parse(e.target.responseText);
-            
-                    for(var i=0; i<data1.length; i++){
-                      playerName = data1[i].firstName;
-
-                      const th = document.createElement("th");
-                      th.innerHTML = playerName;
-                      tr.appendChild(th);
-
-                      
-                      
-
-                    }
-                }
-            }
-            
-            
+            const fullName = "<b>" + firstName + " " + lastName + "</b>";
+            */
             const tr = document.createElement("tr");
+
+            const td_msg = document.createElement("td");
+            const td_name = document.createElement("td");
+
+            td_msg.innerHTML = message;
+            td_name.innerHTML = firstName;
+
+            tr.appendChild(td_msg);
+            tr.appendChild(td_name);
             outputTable.appendChild(tr);
-            const td = document.createElement("td");
-            td.innerHTML = data2[i].msg;
-            tr.appendChild(td);
 
         }
-    } 
+    }
+}
+getPlayer();
+function getPlayer(){
+    const xhr2 = new XMLHttpRequest();
+    xhr2.addEventListener ("load", res);
+    xhr2.open("GET", "/~vermaj/LocalLeague/php/getPlayer.php?userID=" + uid);
+    xhr2.send();
+
+    function res(e){
+        const data2 = JSON.parse(e.target.responseText);
+
+        for(var i=0; i<data2.length; i++){
+            const pid = data2[i].playerID;
+            playerID.value = pid;
+        }
+    }
 }
 
 

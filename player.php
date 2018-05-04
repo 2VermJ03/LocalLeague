@@ -1,7 +1,7 @@
 <?php
   session_start();
   if ((isset($_SESSION["user"]) && $_SESSION["user"] == true)){
-    echo "<p id='userID' class='hide'>" . $_SESSION['user'] . "</p>";
+    echo "<input type='text' class='hide' name='userID' id='userID' value='" . $_SESSION['user'] . "'>";
   }
   else{
     header("Location: /~vermaj/LocalLeague/index.php");
@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  
+  <link rel="icon" href="img/favicon.png">
   <link rel="stylesheet" href="css/stylesheet.css?v=1.0">
   
   
@@ -36,7 +36,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="index.php">Home</a></li>
-        <li class="active"><a href="player.php">Player profile</a></li>
+        <li class="active"><a href="player.php">Player Profile</a></li>
         <li><a href="myclub.php">My Club</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
